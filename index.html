@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories, Systems, and Software</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <a href="#home" class="logo">Stories + Systems</a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work/Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="theme-toggle" id="themeToggle">Reading Mode</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow">Portfolio Website</p>
+          <h1>Stories, Systems, and Software</h1>
+          <p>
+            I build thoughtful web experiences where code, design, research, and
+            storytelling meet.
+          </p>
+          <a href="#projects" class="button">View My Work</a>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <h2>Opening Chapter</h2>
+        <div class="content-card">
+          <p>
+            Hi, I’m Sierra. I’m a computer science student interested in web
+            development, accessible design, research, and systems that help
+            people solve real problems.
+          </p>
+          <p>
+            My work often connects technical problem-solving with creativity.
+            Whether I am building a web app, researching a topic, or writing
+            fiction, I care about structure, clarity, and meaningful user
+            experiences.
+          </p>
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <h2>The Archive</h2>
+        <div class="grid">
+          <article class="content-card">
+            <h3>Technical Skills</h3>
+            <ul>
+              <li>HTML, CSS, JavaScript</li>
+              <li>React and TypeScript</li>
+              <li>Git, GitHub, and GitHub Pages</li>
+              <li>API integration and debugging</li>
+            </ul>
+          </article>
+
+          <article class="content-card">
+            <h3>Professional Strengths</h3>
+            <ul>
+              <li>Customer support and troubleshooting</li>
+              <li>Research and documentation</li>
+              <li>Collaboration and communication</li>
+              <li>Creative problem-solving</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <h2>Featured Works</h2>
+        <p class="section-intro">
+          Each project is part of my growing library of technical work.
+        </p>
+
+        <div class="project-filters">
+          <button class="filter-button active" data-filter="all">All</button>
+          <button class="filter-button" data-filter="web">Web Apps</button>
+          <button class="filter-button" data-filter="research">Research</button>
+          <button class="filter-button" data-filter="class">
+            Class Projects
+          </button>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card" data-category="web">
+            <h3>EPL Check-In POS</h3>
+            <p>
+              A capstone web application for inventory browsing, public item
+              views, admin workflows, and point-of-sale features.
+            </p>
+            <button class="details-button">Read Case Study</button>
+            <div class="project-details">
+              <p>
+                Tools include React, TypeScript, FastAPI, PostgreSQL, Docker,
+                and OpenAPI-generated client code.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="research">
+            <h3>Kid-Friendly Interpreter Project</h3>
+            <p>
+              An educational programming project exploring how interpreters
+              read, evaluate, and respond to code in a way that could eventually
+              support beginner-friendly learning.
+            </p>
+            <button class="details-button">Read Case Study</button>
+            <div class="project-details">
+              <p>
+                This project connects computer science and education by thinking
+                about how programming concepts can be made more understandable
+                for younger learners. It focuses on parsing, evaluation, control
+                flow, and how code can be explained step by step.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="class">
+            <h3>Interpreter Project</h3>
+            <p>
+              A programming languages project focused on parsing, evaluating,
+              and understanding how interpreters process code.
+            </p>
+            <button class="details-button">Read Case Study</button>
+            <div class="project-details">
+              <p>
+                This project strengthened my understanding of syntax,
+                evaluation, control flow, and language implementation.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Leave a Note</h2>
+        <form id="contactForm" class="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+
+          <button type="submit" class="button">Send Message</button>
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; <span id="year"></span> Sierra Rhodes. Built with HTML, CSS, and
+        JavaScript.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
