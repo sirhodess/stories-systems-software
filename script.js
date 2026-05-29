@@ -1,87 +1,102 @@
-const navToggle = document.querySelector("#navToggle");
-const navLinks = document.querySelector("#navLinks");
+const year = document.querySelector("#year");
 const themeToggle = document.querySelector("#themeToggle");
 const filterButtons = document.querySelectorAll(".filter-button");
 const projectCards = document.querySelectorAll(".project-card");
-const detailButtons = document.querySelectorAll(".details-button");
-const contactForm = document.querySelector("#contactForm");
-const formMessage = document.querySelector("#formMessage");
-const year = document.querySelector("#year");
 
 year.textContent = new Date().getFullYear();
 
-navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-});
-
-const savedTheme = localStorage.getItem("theme");
+const savedTheme = localStorage.getItem("portfolio-theme");
 
 if (savedTheme === "dark") {
-  document.body.classList.add("dark-mode");
+  document.body.classList.add("dark");
+  themeToggle.textContent = "Light";
 }
 
 themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark");
 
-  if (document.body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+  themeToggle.textContent = isDark ? "Light" : "Dark";
 });
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const selectedCategory = button.dataset.filter;
+    const filter = button.dataset.filter;
 
-    filterButtons.forEach((filterButton) => {
-      filterButton.classList.remove("active");
-    });
-
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
 
     projectCards.forEach((card) => {
-      const cardCategory = card.dataset.category;
-
-      if (selectedCategory === "all" || selectedCategory === cardCategory) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+      const categories = card.dataset.category.split(" ");
+      const shouldShow = filter === "all" || categories.includes(filter);
+      card.classList.toggle("hidden", !shouldShow);
     });
   });
 });
 
-detailButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".project-card");
-    card.classList.toggle("open");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canvas = document.querySelector("#codeCanvas");
+const ctx = canvas.getContext("2d");
 
-    if (card.classList.contains("open")) {
-      button.textContent = "Hide Details";
-    } else {
-      button.textContent = "Read Case Study";
+const snippets = [
+  "const user = await learn();",
+  "function buildFuture() {}",
+  "<section aria-label='projects'>",
+  "git commit -m 'polish portfolio'",
+  "return accessibleUI;",
+  "display: grid;",
+  "async function create()",
+  "type Project = Portfolio;",
+  "focus-visible",
+  "npm run build"
+];
+
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  particles = Array.from({ length: Math.floor(canvas.width / 95) }, () => ({
+    text: snippets[Math.floor(Math.random() * snippets.length)],
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    speed: 0.25 + Math.random() * 0.55,
+    size: 12 + Math.random() * 4,
+    opacity: 0.18 + Math.random() * 0.22
+  }));
+}
+
+function drawCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const isDark = document.body.classList.contains("dark");
+  ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
+
+  particles.forEach((particle) => {
+    ctx.globalAlpha = particle.opacity;
+    ctx.fillStyle = isDark ? "#8ab4c8" : "#315c72";
+    ctx.font = `${particle.size}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`;
+    ctx.fillText(particle.text, particle.x, particle.y);
+
+    particle.y += particle.speed;
+
+    if (particle.y > canvas.height + 20) {
+      particle.y = -20;
+      particle.x = Math.random() * canvas.width;
+      particle.text = snippets[Math.floor(Math.random() * snippets.length)];
     }
   });
-});
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(drawCanvas);
+}
 
-  const name = document.querySelector("#name").value.trim();
-  const email = document.querySelector("#email").value.trim();
-  const message = document.querySelector("#message").value.trim();
+resizeCanvas();
 
-  if (name === "" || email === "" || message === "") {
-    formMessage.textContent = "Please fill out every field before submitting.";
-    return;
-  }
+if (!prefersReducedMotion) {
+  drawCanvas();
+}
 
-  if (!email.includes("@") || !email.includes(".")) {
-    formMessage.textContent = "Please enter a valid email address.";
-    return;
-  }
-
-  formMessage.textContent = "Thanks! Your message has been checked.";
-  contactForm.reset();
-});
+window.addEventListener("resize", resizeCanvas);
