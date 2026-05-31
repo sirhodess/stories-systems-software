@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <canvas id="codeCanvas" aria-hidden="true"></canvas>
+
     <header class="site-header">
       <nav class="nav">
         <a href="#" class="logo">Sierra Rhodes</a>
@@ -20,208 +24,219 @@
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </div>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          Dark
+        </button>
       </nav>
     </header>
 
-    <main id="main"></main>
-    <section class="hero section">
-      <div class="hero-content">
-        <p class="eyebrow">Computer Science · EdTech · Accessible Software</p>
+    <main id="main">
+      <section class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow">Computer Science · EdTech · Accessible Software</p>
 
-        <h1>
-          Building thoughtful software for learning, creativity, and real-world
-          workflows.
-        </h1>
+          <h1>
+            Building thoughtful software for learning, creativity, and
+            real-world workflows.
+          </h1>
 
-        <p class="hero-text">
-          I’m a soon-to-be Computer Science graduate interested in frontend
-          development, EdTech, accessibility, and human-centered software. My
-          work blends technical problem-solving with clear communication and
-          creative thinking.
-        </p>
+          <p class="hero-text">
+            I’m a soon-to-be Computer Science graduate interested in frontend
+            development, EdTech, accessibility, and human-centered software. My
+            work blends technical problem-solving with clear communication and
+            creative thinking.
+          </p>
 
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">View Projects</a>
-          <a
-            class="button secondary"
-            href="https://github.com/sirhodess"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a
+              class="button secondary"
+              href="https://github.com/sirhodess"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
-      </div>
-      <aside class="hero-card" aria-label="Professional focus">
-        <p class="card-label">Current Focus</p>
+        <aside class="hero-card" aria-label="Professional focus">
+          <p class="card-label">Current Focus</p>
 
-        <h2>Full-stack + EdTech</h2>
+          <h2>Full-stack + EdTech</h2>
 
-        <p>
-          Designing practical, accessible interfaces and tools that make
-          technical systems easier for people to use.
-        </p>
+          <p>
+            Designing practical, accessible interfaces and tools that make
+            technical systems easier for people to use.
+          </p>
 
-        <div class="mini-list">
-          <span>React</span>
-          <span>TypeScript</span>
-          <span>Python</span>
-          <span>HCI</span>
+          <div class="mini-list">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Python</span>
+            <span>HCI</span>
+          </div>
+        </aside>
+      </section>
+      <section id="about" class="section about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+
+          <h2>Creative thinking meets technical problem-solving.</h2>
         </div>
-      </aside>
-    </section>
-    <section id="about" class="section about">
-      <div class="section-heading">
-        <p class="eyebrow">About</p>
 
-        <h2>Creative thinking meets technical problem-solving.</h2>
-      </div>
+        <div class="about-grid">
+          <p>
+            My background connects software development, writing, research, and
+            education. I enjoy building tools that feel clear, useful, and
+            intentional, especially when they help people learn or navigate
+            complex tasks.
+          </p>
 
-      <div class="about-grid">
-        <p>
-          My background connects software development, writing, research, and
-          education. I enjoy building tools that feel clear, useful, and
-          intentional, especially when they help people learn or navigate
-          complex tasks.
-        </p>
+          <p>
+            I’m especially interested in EdTech, accessibility, user experience,
+            and the way software can support learning. I care about clean
+            interfaces, thoughtful systems, and documentation that helps people
+            understand what they are using.
+          </p>
+        </div>
+      </section>
 
-        <p>
-          I’m especially interested in EdTech, accessibility, user experience,
-          and the way software can support learning. I care about clean
-          interfaces, thoughtful systems, and documentation that helps people
-          understand what they are using.
-        </p>
-      </div>
-    </section>
+      <section id="projects" class="section projects">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
 
-    <section id="projects" class="section projects">
-      <div class="section-heading">
-        <p class="eyebrow">Projects</p>
+          <h2>Selected work</h2>
+        </div>
 
-        <h2>Selected work</h2>
-      </div>
+        <div class="project-grid">
+          <article class="project-card" data-category="web">
+            <div>
+              <p class="project-type">Capstone · Full-stack</p>
 
-      <div class="project-grid">
-        <article class="project-card" data-category="web">
-          <div>
-            <p class="project-type">Capstone · Full-stack</p>
+              <h3>EPL Check-In POS</h3>
 
-            <h3>EPL Check-In POS</h3>
+              <p>
+                A check-in, inventory, and point-of-sale system for an
+                electronics lab. Features include public item search, admin
+                inventory tools, and POS workflows.
+              </p>
+            </div>
 
-            <p>
-              A check-in, inventory, and point-of-sale system for an electronics
-              lab. Features include public item search, admin inventory tools,
-              and POS workflows.
-            </p>
+            <ul class="tag-list">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>FastAPI</li>
+              <li>Docker</li>
+            </ul>
+          </article>
+
+          <article class="project-card" data-category="ux education">
+            <div>
+              <p class="project-type">Voice UI · Class project</p>
+
+              <h3>Movie Detective</h3>
+
+              <p>
+                A voice user interface concept that helps users find movies by
+                genre and location using conversational prompts and error
+                handling.
+              </p>
+            </div>
+
+            <ul class="tag-list">
+              <li>VUI</li>
+              <li>Dialogflow</li>
+              <li>UX</li>
+              <li>Research</li>
+            </ul>
+          </article>
+
+          <article class="project-card" data-category="education">
+            <div>
+              <p class="project-type">Programming Languages · Education</p>
+
+              <h3>Learning-Focused Interpreter</h3>
+
+              <p>
+                An interpreter project exploring how programming concepts can be
+                structured and explained in a way that supports younger
+                learners.
+              </p>
+            </div>
+
+            <ul class="tag-list">
+              <li>Python</li>
+              <li>Parsing</li>
+              <li>Education</li>
+              <li>CS</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section skills">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+
+          <h2>Tools and strengths</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Frontend</h3>
+
+            <p>HTML, CSS, JavaScript, React, TypeScript, responsive design</p>
           </div>
 
-          <ul class="tag-list">
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>FastAPI</li>
-            <li>Docker</li>
-          </ul>
-        </article>
+          <div class="skill-card">
+            <h3>Backend & Tools</h3>
 
-        <article class="project-card" data-category="ux education">
-          <div>
-            <p class="project-type">Voice UI · Class project</p>
-
-            <h3>Movie Detective</h3>
-
-            <p>
-              A voice user interface concept that helps users find movies by
-              genre and location using conversational prompts and error
-              handling.
-            </p>
+            <p>Python, FastAPI, PostgreSQL, Docker, Git, GitHub workflows</p>
           </div>
 
-          <ul class="tag-list">
-            <li>VUI</li>
-            <li>Dialogflow</li>
-            <li>UX</li>
-            <li>Research</li>
-          </ul>
-        </article>
+          <div class="skill-card">
+            <h3>Design & Research</h3>
 
-        <article class="project-card" data-category="education">
-          <div>
-            <p class="project-type">Programming Languages · Education</p>
-
-            <h3>Learning-Focused Interpreter</h3>
-
-            <p>
-              An interpreter project exploring how programming concepts can be
-              structured and explained in a way that supports younger learners.
-            </p>
+            <p>Accessibility, HCI, voice user interfaces, technical writing</p>
           </div>
-
-          <ul class="tag-list">
-            <li>Python</li>
-            <li>Parsing</li>
-            <li>Education</li>
-            <li>CS</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="section skills">
-      <div class="section-heading">
-        <p class="eyebrow">Skills</p>
-
-        <h2>Tools and strengths</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Frontend</h3>
-
-          <p>HTML, CSS, JavaScript, React, TypeScript, responsive design</p>
         </div>
+      </section>
 
-        <div class="skill-card">
-          <h3>Backend & Tools</h3>
+      <section id="contact" class="section contact">
+        <div class="contact-card">
+          <p class="eyebrow">Contact</p>
 
-          <p>Python, FastAPI, PostgreSQL, Docker, Git, GitHub workflows</p>
+          <h2>Let’s connect.</h2>
+
+          <p>
+            I’m open to opportunities in frontend development, EdTech,
+            accessibility, and software roles where communication and thoughtful
+            design matter.
+          </p>
+
+          <div class="contact-actions">
+            <a class="button primary" href="mailto:sirhodes@pdx.com">
+              Email Me
+            </a>
+
+            <a
+              class="button secondary"
+              href="https://github.com/sirhodess"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View GitHub
+            </a>
+          </div>
         </div>
-
-        <div class="skill-card">
-          <h3>Design & Research</h3>
-
-          <p>Accessibility, HCI, voice user interfaces, technical writing</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div class="contact-card">
-        <p class="eyebrow">Contact</p>
-
-        <h2>Let’s connect.</h2>
-
-        <p>
-          I’m open to opportunities in frontend development, EdTech,
-          accessibility, and software roles where communication and thoughtful
-          design matter.
-        </p>
-
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:sirhodes@pdx.com">
-            Email Me
-          </a>
-
-          <a
-            class="button secondary"
-            href="https://github.com/sirhodess"
-            target="_blank"
-            rel="noreferrer"
-          >
-            View GitHub
-          </a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer class="footer">
       <p>
