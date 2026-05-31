@@ -35,7 +35,9 @@ filterButtons.forEach((button) => {
   });
 });
 
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 const canvas = document.querySelector("#codeCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -49,7 +51,7 @@ const snippets = [
   "async function create()",
   "type Project = Portfolio;",
   "focus-visible",
-  "npm run build"
+  "npm run build",
 ];
 
 let particles = [];
@@ -64,7 +66,7 @@ function resizeCanvas() {
     y: Math.random() * canvas.height,
     speed: 0.25 + Math.random() * 0.55,
     size: 12 + Math.random() * 4,
-    opacity: 0.18 + Math.random() * 0.22
+    opacity: 0.18 + Math.random() * 0.22,
   }));
 }
 
@@ -72,7 +74,8 @@ function drawCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const isDark = document.body.classList.contains("dark");
-  ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
+  ctx.font =
+    "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
 
   particles.forEach((particle) => {
     ctx.globalAlpha = particle.opacity;
@@ -100,3 +103,68 @@ if (!prefersReducedMotion) {
 }
 
 window.addEventListener("resize", resizeCanvas);
+
+const contactForm = document.querySelector("#contactForm");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const messageInput = document.querySelector("#message");
+
+const nameError = document.querySelector("#nameError");
+const emailError = document.querySelector("#emailError");
+const messageError = document.querySelector("#messageError");
+const formStatus = document.querySelector("#formStatus");
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function clearFormErrors() {
+  nameError.textContent = "";
+  emailError.textContent = "";
+  messageError.textContent = "";
+  formStatus.textContent = "";
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    clearFormErrors();
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    let isValid = true;
+
+    if (name === "") {
+      nameError.textContent = "Please enter your name.";
+      isValid = false;
+    }
+
+    if (email === "") {
+      emailError.textContent = "Please enter your email.";
+      isValid = false;
+    } else if (!isValidEmail(email)) {
+      emailError.textContent = "Please enter a valid email address.";
+      isValid = false;
+    }
+
+    if (message === "") {
+      messageError.textContent = "Please enter a message.";
+      isValid = false;
+    } else if (message.length < 10) {
+      messageError.textContent = "Please enter at least 10 characters.";
+      isValid = false;
+    }
+
+    if (!isValid) {
+      formStatus.textContent = "Please fix the errors above.";
+      return;
+    }
+
+    formStatus.textContent = "Thank you!";
+
+    contactForm.reset();
+  });
+}
