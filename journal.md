@@ -2,9 +2,9 @@
 
 ## Project Links
 
-Public GitHub Repository:
+Public GitHub Repository: https://github.com/sirhodess/stories-systems-software
 
-Deployed GitHub Pages Site:
+Deployed GitHub Pages Site: https://sirhodess.github.io/stories-systems-software/
 
 ## Note on Commit History
 

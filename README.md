@@ -44,9 +44,7 @@ No additional installation is required.
 
 ## Deployed Site
 
-GitHub Pages link:
-
-TBA
+GitHub Pages link: https://sirhodess.github.io/stories-systems-software/
 
 ## Outside Sources
 
